@@ -40,8 +40,9 @@ Las funcionalidades construidas en la visualización suplen el alcance actual qu
 
 TECNOLOGIAS: 
 d3v5, javascript, css y html.
+  ![alt text](https://s3.us-east-2.amazonaws.com/testing.alvarod/captura.PNG)
 
-https://s3.us-east-2.amazonaws.com/testing.alvarod/captura.PNG
+https://adgonzalez02109.github.io/feature_model_designer/
 
 Autor: Alvaro Diego Gonzalez Vesga.
 Este proyecto esta bajo licencia MIT.
