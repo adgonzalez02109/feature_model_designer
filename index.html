@@ -1,0 +1,141 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+<head>
+	<title>Generic - Spatial by TEMPLATED</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+
+</head>
+<body>
+
+	<!-- Header -->
+	<header id="header">
+		FEATURE MODEL DESIGNER
+
+	</header>
+
+	<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+	<!-- Main -->
+	<section id="main" class="wrapper">
+		<div class="container">
+
+			
+			<div class="row">
+				<div id="current_object" class="6u 12u$(xsmall)">
+					<label style ="font-size:2em" id="d1"></label>
+					<br><br>
+					<input type="text"  id="d2">
+					<br><br>
+					<div class="6u$ 12u$(small)">
+						<input type="checkbox" id="human" name="human" checked>
+						<label for="human">Mandatory</label>
+					</div>
+					<div class="4u 12u$(xsmall)">
+						<input type="radio" id="priority-low" name="priority" checked>
+						<label for="priority-low">Or</label>
+					</div>
+					<div class="4u 12u$(xsmall)">
+						<input type="radio" id="priority-normal" name="priority">
+						<label for="priority-normal">Alternative</label>
+					</div>
+					<div class="4u 12u$(xsmall)">
+						<input type="radio" id="priority-high" name="priority">
+						<label for="priority-high">None</label>
+					</div>
+
+
+					<br><br>
+					<button type="button" onclick="add_node()">AGREGAR</button>
+					<br><br>
+					<button type="button" onclick="delete_node()">BORRAR NODO</button>
+					<br><br>
+					<button type="button" onclick="edit_node()">ACTUALIZAR NODO</button>
+
+				</div>
+				<div class="6u$ 12u$(xsmall)">
+					<svg id="net_canvas" width="1300" height="500"></svg>
+					<script src="test.js"></script>
+				</div>
+			</div>
+			<br><br><br>
+			<div class="row">
+				Por medio de esta visualización se puede crear feature models acorde al alcance definido en la herramienta de Feature IDE de Eclipse sin tener en cuenta la creación de constraints. Esto significa que se puede crear un arbol de features donde cada nodo excepto el raiz puede ser mandatory, optional o puede estar agrupado con sus hermanos como or o alternative.
+				<br>
+				La visualización tiene las siguientes funcionalidades:
+				<br><list>
+					<li><strong>Desplegar hijos de un nodo:</strong>Se puede dar click sobre el nodo y esto despliega y reubica todos los nodos hijos. Los nodos que son hojas estan en color verde, los nodos que son padre de alguno estan en color cafe.</li>
+					<li><strong>Agregar un nodo hijo:</strong>Al dar clic en un nodo en la parte superior izquierda se muestra el nombre de este nodo. Si se desea agregar a este nodo un hijo se debe diligenciar el input que esta debajo del nombre del nodo con el nombre del hijo que se desea agregar. Se puede seleccionar el tipo de nodo, si es mandatory u optional, o si va a estar agrupado con sus hermanos como tipo or o alternative. Si se selecciona algun tipo de agrupación esta primará sobre el tipo de nodo.</li>
+					<li><strong>Actualizar nodo:</strong>Al dar clic en un nodo en la parte superior izquierda se muestra el nombre de este nodo. Se puede diligenciar el input que esta debajo del nombre del nodo y al dar clic en actualizar nodo se modificará el nombre del mismo. Si se selecciona un tipo de nodo, este nodo será mandatory u optional respecto a su padre, y si se selecciona un tipo de agrupación, los nodos hijos seran or o alternative.
+						<li><strong>Borrar nodo:</strong>Se debe dar clic sobre el nodo que se desea borrar y dar clic en el boton borrar.
+
+						</list>
+<br><br>
+Los nodos de tipo mandatory tiene un circulo relleno de negro en su parte superior, los nodos de tipos optional tiene un circulo relleno de blanco en su parte superior, los hijos con tipo de agrupación or tienen las lineas a su padre punteadas sin un circulo en la parte superior, y los hijos con tipo de agrupación alternative tienen las lineas a su padre continuas sin un circulo  en la parte superior.
+					</div>
+					<br><br><br><br>
+					<div class="row">
+						<div  class="4u">
+							<h1>WHAT</h1>
+							Atendiendo a que la tarea principal es de produce, la fuente original es un tree en formato json y a medida que se va interactuando con la visualización se va aumentando este tree. En este orden de ideas los siguientes son los campos con los que se trabajó dentro del tree:
+							<br><br>
+							name (categorico): Almacena el nombre del feature. Debe ser unico.<br>
+							metadata.id (categorico ordenado): Almacena un id unico para cada nodo cuya estructura describe en que posición del arbol esta.<br>
+							metadata.typeson (categorico): Describe el tipo de agrupación que se va a aplicar a los hijos. Puede ser or, xor o null<br>
+							metadata.type (categorico): Describe el tipo de nodo. Puede ser mandatory u optional.<br><br>
+							
+						</div>
+						<div  class="4u">
+							<h1>WHY</h1>
+							<strong>Anotate features:</strong> Permite crear, editar y borrar features anotando sus respectivos atributos (nombre, tipo) y relaciones (tipo de agrupación)<br>
+							<strong>Explore features:</strong> Permite adentrarse o alejarse de los diferentes niveles que conforman un arbol de features.<br>
+							<strong>Present and discover extremes:</strong> Permite visualizar el primer nodo y los hojos de tipo hoja en el arbol de manera intuitiva.<br>
+							<strong>Identify features:</strong> Permite seleccionar un feature especifico.
+							<br>
+
+
+
+						</div>
+						<div  class="4u">
+							<h1>HOW</h1>
+							<p><b>Marca - punto:</b></p>
+							<b>Posición espacial (Separate order and align):</b>Los puntos corresponden a los rectangulos que representar cada feature. Estos rectangulos estan separados ordenados y alineados por los niveles del arbol y por la posición de los nodos vecinos que se encuentren desplegados.<br>
+
+							<b>Color hue (Express): </b>El color representa si el nodo tiene hijos o si es una hoja.
+							<br>
+
+							Manipulate: Select and change de los nodos dado que al seleccionar se modifica la visualización desplegando o colapsando otros nodos hijos.<br>
+							
+							<br>
+							<br>
+
+							<p><b>Marca - linea:</b></p>
+							<b>Posición espacial (Express and align):</b>Por medio de la posición de una linea uniendo dos puntos expresa una relación entre features, y es alineada los niveles y la ubicación de los nodos vecinos.<br>
+
+							<b>Shape (express)</b>La forma de la linea (punteada, o no punteada) representa si la relación de los hijos de un feature es de tipo de agrupación or o xor.<br>
+							<br>
+							
+
+
+						</div>
+					</div>		</div>
+				</section>
+
+
+
+				<!-- Scripts -->
+				<script src="assets/js/jquery.min.js"></script>
+				<script src="assets/js/skel.min.js"></script>
+				<script src="assets/js/util.js"></script>
+				<script src="assets/js/main.js"></script>
+
+
+			</body>
+			</html>
