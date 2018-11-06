@@ -1,5 +1,8 @@
 # feature_model_designer
 Por medio de esta visualización se puede crear feature models acorde al alcance definido en la herramienta de Feature IDE de Eclipse sin tener en cuenta la creación de constraints. Esto significa que se puede crear un arbol de features donde cada nodo excepto el raiz puede ser mandatory, optional o puede estar agrupado con sus hermanos como or o alternative. 
+
+  ![alt text](https://s3.us-east-2.amazonaws.com/testing.alvarod/captura.PNG)
+
 La visualización tiene las siguientes funcionalidades: 
 Desplegar hijos de un nodo:Se puede dar click sobre el nodo y esto despliega y reubica todos los nodos hijos. Los nodos que son hojas estan en color verde, los nodos que son padre de alguno estan en color cafe.
 Agregar un nodo hijo:Al dar clic en un nodo en la parte superior izquierda se muestra el nombre de este nodo. Si se desea agregar a este nodo un hijo se debe diligenciar el input que esta debajo del nombre del nodo con el nombre del hijo que se desea agregar. Se puede seleccionar el tipo de nodo, si es mandatory u optional, o si va a estar agrupado con sus hermanos como tipo or o alternative. Si se selecciona algun tipo de agrupación esta primará sobre el tipo de nodo.
@@ -40,7 +43,6 @@ Las funcionalidades construidas en la visualización suplen el alcance actual qu
 
 TECNOLOGIAS: 
 d3v5, javascript, css y html.
-  ![alt text](https://s3.us-east-2.amazonaws.com/testing.alvarod/captura.PNG)
 
 https://adgonzalez02109.github.io/feature_model_designer/
 
